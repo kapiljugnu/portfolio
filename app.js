@@ -11,6 +11,25 @@ function pageTransitions() {
       this.className += ' active-btn';
     });
   }
+
+  allSection.addEventListener('click', (e) => {
+    const id = e.target.dataset.id;
+    if (id) {
+      // remove selected from the other btns
+      sectionBtns.forEach((btn) => {
+        btn.classList.remove('active');
+      });
+      e.target.classList.add('active');
+
+      // hide other sections
+      sections.forEach((section) => {
+        section.classList.remove('active');
+      });
+
+      const el = document.getElementById(id);
+      el.classList.add('active');
+    }
+  });
 }
 
 pageTransitions();
